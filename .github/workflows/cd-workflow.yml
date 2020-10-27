@@ -2,10 +2,8 @@
 
 name: Docker CD
 
-on:
-  push:
-    paths:
-      - "**Dockerfile**"
+on: push
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -63,6 +61,6 @@ jobs:
       uses: docker/build-push-action@v1
       with:
         username: ${{github.actor}}
-        password: ${{secrets.GITHUBTOKEN}}
+        password: ${{secrets.GITHUB_TOKEN}}
         registry: docker.pkg.github.com
         repository: Jaboo9/github-actions-for-packages/tic-tac-toe
